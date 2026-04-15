@@ -20,22 +20,22 @@ A cross-platform application for syncing CNC files between a local folder and Go
 
 **Get the latest stable build from GitHub Actions:**
 
-í´— **[View Latest Builds](https://github.com/YOUR-USERNAME/PyCNCSync/actions)**
+ï¿½ï¿½ï¿½ **[View Latest Builds](https://github.com/6e69ck/PyCNCSync/actions)**
 
 Or download directly:
 
 #### Windows
-- **Installer**: [PyCNCSync-Installer.exe](https://github.com/YOUR-USERNAME/PyCNCSync/actions)
+- **Installer**: [PyCNCSync-Installer.exe](https://github.com/6e69ck/PyCNCSync/actions)
   - Standard Windows installer with uninstall support
   - Installs to Program Files with Start Menu shortcuts
 
 #### macOS
-- **DMG Installer**: [PyCNCSync.dmg](https://github.com/YOUR-USERNAME/PyCNCSync/actions)
+- **DMG Installer**: [PyCNCSync.dmg](https://github.com/6e69ck/PyCNCSync/actions)
   - Disk image installer
   - Drag app to Applications folder to install
 
 **To download:**
-1. Go to [GitHub Actions](https://github.com/YOUR-USERNAME/PyCNCSync/actions)
+1. Go to [GitHub Actions](https://github.com/6e69ck/PyCNCSync/actions)
 2. Click the latest workflow run (green checkmark)
 3. Scroll to **Artifacts** section
 4. Download `PyCNCSync-windows-installer` or `PyCNCSync-macos-installer`
@@ -123,7 +123,7 @@ Edit anytime by clicking **Settings** in tray menu.
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR-USERNAME/PyCNCSync.git
+git clone https://github.com/6e69ck/PyCNCSync.git
 cd PyCNCSync
 
 # Create virtual environment
