@@ -26,7 +26,7 @@ jobs:
         run: pyinstaller app.spec
       
       - name: Upload macOS artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: PyCNCSync-macos
           path: dist/PyCNCSync.app
@@ -50,7 +50,7 @@ jobs:
         run: pyinstaller app.spec
       
       - name: Upload Windows artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: PyCNCSync-windows
           path: dist/PyCNCSync.exe
