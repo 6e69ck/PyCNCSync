@@ -17,7 +17,7 @@ InstallDirRegKey HKLM "Software\PyCNCSync" "InstallDir"
 ; Installer sections
 Section "Install"
   SetOutPath "$INSTDIR"
-  File /r "dist\PyCNCSync\*.*"
+  File "dist\PyCNCSync.exe"
   
   ; Create Start Menu shortcuts
   CreateDirectory "$SMPROGRAMS\PyCNCSync"
@@ -30,7 +30,7 @@ Section "Install"
   ; Registry entry for uninstall
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PyCNCSync" "DisplayName" "PyCNCSync"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PyCNCSync" "UninstallString" "$INSTDIR\Uninstall.exe"
-  WriteRegStr HKLM "Software\Software\PyCNCSync" "InstallDir" "$INSTDIR"
+  WriteRegStr HKLM "Software\PyCNCSync" "InstallDir" "$INSTDIR"
 SectionEnd
 
 ; Uninstaller section
