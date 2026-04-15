@@ -25,11 +25,16 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller app.spec
       
-      - name: Upload macOS artifact
+      - name: Create DMG
+        run: |
+          brew install create-dmg
+          create-dmg --volname "PyCNCSync" --window-pos 200 120 --window-size 800 400 --icon-size 100 --icon "PyCNCSync.app" 200 190 --hide-extension "PyCNCSync.app" --app-drop-link 600 190 "dist/PyCNCSync.dmg" "dist/" || true
+      
+      - name: Upload macOS DMG
         uses: actions/upload-artifact@v4
         with:
-          name: PyCNCSync-macos
-          path: dist/PyCNCSync.app
+          name: PyCNCSync-macos-installer
+          path: dist/PyCNCSync.dmg
 
   build-windows:
     runs-on: windows-latest
@@ -49,8 +54,17 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller app.spec
       
-      - name: Upload Windows artifact
+      - name: Install NSIS
+        run: |
+          Invoke-WebRequest -Uri "https://sourceforge.net/projects/nsis/files/NSIS%203/3.10/nsis-3.10-setup.exe/download" -OutFile nsis-installer.exe
+          Start-Process nsis-installer.exe -ArgumentList '/S' -Wait
+      
+      - name: Build Windows Installer
+        run: |
+          "C:\Program Files (x86)\NSIS\makensis.exe" installer.nsi
+      
+      - name: Upload Windows Installer
         uses: actions/upload-artifact@v4
         with:
-          name: PyCNCSync-windows
-          path: dist/PyCNCSync.exe
+          name: PyCNCSync-windows-installer
+          path: dist/PyCNCSync-Installer.exe
