@@ -27,14 +27,13 @@ jobs:
       
       - name: Create DMG
         run: |
-          brew install create-dmg
-          create-dmg --volname "PyCNCSync" --window-pos 200 120 --window-size 800 400 --icon-size 100 --icon "PyCNCSync.app" 200 190 --hide-extension "PyCNCSync.app" --app-drop-link 600 190 "dist/PyCNCSync.dmg" "dist/" || true
+          hdiutil create -volname "PyCNCSync" -srcfolder dist -ov -format UDZO dist/PyCNCSync.dmg
       
       - name: Upload macOS DMG
         uses: actions/upload-artifact@v4
         with:
           name: PyCNCSync-macos-installer
-          path: dist/PyCNCSync.dmg
+          path: dist/*.dmg
 
   build-windows:
     runs-on: windows-latest

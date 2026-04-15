@@ -6,8 +6,8 @@
 ; Basic settings
 Name "PyCNCSync"
 OutFile "dist\PyCNCSync-Installer.exe"
-InstallDir "$PROGRAMFILES\PyCNCSync"
-InstallDirRegKey HKLM "Software\PyCNCSync" "InstallDir"
+InstallDir "$LOCALAPPDATA\PyCNCSync"
+InstallDirRegKey HKCU "Software\PyCNCSync" "InstallDir"
 
 ; Pages
 !insertmacro MUI_PAGE_DIRECTORY
@@ -28,15 +28,15 @@ Section "Install"
   WriteUninstaller "$INSTDIR\Uninstall.exe"
   
   ; Registry entry for uninstall
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PyCNCSync" "DisplayName" "PyCNCSync"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PyCNCSync" "UninstallString" "$INSTDIR\Uninstall.exe"
-  WriteRegStr HKLM "Software\PyCNCSync" "InstallDir" "$INSTDIR"
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\PyCNCSync" "DisplayName" "PyCNCSync"
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\PyCNCSync" "UninstallString" "$INSTDIR\Uninstall.exe"
+  WriteRegStr HKCU "Software\PyCNCSync" "InstallDir" "$INSTDIR"
 SectionEnd
 
 ; Uninstaller section
 Section "Uninstall"
   RMDir /r "$SMPROGRAMS\PyCNCSync"
   RMDir /r "$INSTDIR"
-  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\PyCNCSync"
-  DeleteRegKey HKLM "Software\PyCNCSync"
+  DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\PyCNCSync"
+  DeleteRegKey HKCU "Software\PyCNCSync"
 SectionEnd
