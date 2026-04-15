@@ -28,12 +28,18 @@ jobs:
       - name: Create DMG
         run: |
           hdiutil create -volname "PyCNCSync" -srcfolder dist -ov -format UDZO dist/PyCNCSync.dmg
+
+      - name: Verify DMG output
+        run: |
+          ls -la dist
+          test -f dist/PyCNCSync.dmg
       
       - name: Upload macOS DMG
         uses: actions/upload-artifact@v4
         with:
           name: PyCNCSync-macos-installer
           path: dist/*.dmg
+          if-no-files-found: error
 
   build-windows:
     runs-on: windows-latest
