@@ -55,9 +55,7 @@ jobs:
         run: pyinstaller app.spec
       
       - name: Install NSIS
-        run: |
-          Invoke-WebRequest -Uri "https://sourceforge.net/projects/nsis/files/NSIS%203/3.10/nsis-3.10-setup.exe/download" -OutFile nsis-installer.exe
-          Start-Process nsis-installer.exe -ArgumentList '/S' -Wait
+        run: choco install nsis -y
       
       - name: Build Windows Installer
         run: |
